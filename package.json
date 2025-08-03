@@ -1,0 +1,21 @@
+{
+  "name": "better-dev",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:shell\" \"npm run dev:product\" \"npm run dev:cart\" \"npm run dev:user\" \"npm run dev:order\"",
+    "dev:shell": "cd packages/shell && npm run dev",
+    "dev:product": "cd packages/product && npm run dev",
+    "dev:cart": "cd packages/cart && npm run dev",
+    "dev:user": "cd packages/user && npm run dev",
+    "dev:order": "cd packages/order && npm run dev",
+    "install:all": "npm install && npm run install:packages",
+    "install:packages": "cd packages/shell && npm install && cd ../product && npm install && cd ../cart && npm install && cd ../user && npm install && cd ../order && npm install && cd ../shared && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
